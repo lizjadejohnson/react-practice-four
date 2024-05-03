@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.cardContainer{
+  border: solid black;
+  margin: 3em;
+  height: 42vh;
+  width: 40%;
+  margin-left: 28%;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn{
+  border:solid blue;
+  width:25%;
+  border-radius:12px;
+  font-size: 1.5em;
+}
+.btn:hover{
+  background-color:rgb(165, 165, 165);
+}
+
+
+.aPic{
+  width: 100%;
+  height: 100%;
+}
