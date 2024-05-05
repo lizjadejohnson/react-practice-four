@@ -4,6 +4,7 @@ import photos from './models/photos';
 import symbols from './models/symbols';
 import Button from './components/Button';
 import Card from './components/Card';
+import MyCity from './components/MyCity';
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
 
   //Set default loggedOn status to false:
   let [loggedOn, setLoggedOn] = useState(false)
+
+  //Set default myCity status to null:
+  let [myCity, setMyCity] = useState('')
 
 
   // Function to cycle forward through our array of pics:
@@ -55,6 +59,7 @@ function App() {
   };
 
 
+
 //---------------------------------------//
   return (
     <div className="App">
@@ -79,7 +84,8 @@ function App() {
       <div className='btnContainer'>
         <Button action={toggleLogOn} icon={loggedOn ? symbols.logout : symbols.login} />
       </div>
-      
+
+      <MyCity myCity={myCity} setMyCity={setMyCity} />
     </div>
   );
 }
