@@ -24,9 +24,11 @@ function App() {
   //Set default loggedOn status to false:
   let [loggedOn, setLoggedOn] = useState(false)
 
-  //Set default myCity status to null:
+  //Set default myCity status to empty:
   let [myCity, setMyCity] = useState('')
 
+  //Set default theme to light/!isDarkMode:
+  let [isDarkMode, setIsDarkMode] = useState(false)
 
   // Function to cycle forward through our array of pics:
   const changePic = () => {
@@ -58,11 +60,17 @@ function App() {
     
   };
 
-
+    // Function to toggle darkmode status:
+    const toggleDarkMode = () => {
+      setIsDarkMode(!isDarkMode);
+      console.log("Darkmode on: ", isDarkMode)
+      
+    };
 
 //---------------------------------------//
   return (
-    <div className="App">
+    // Setting 1 className as App and 1 as either  'dark-mode' or 'light-mode' depending on isDarkMode:
+    <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <h1> City Directory </h1>
 
       {/* We display our card, we want the card to be whatever currentImage is set to above 
@@ -86,6 +94,9 @@ function App() {
       </div>
 
       <MyCity myCity={myCity} setMyCity={setMyCity} />
+      <div className={myCity === "" ? 'isHidden' : 'isVisible'}>BE SURE TO HIT 'SUBMIT'</div>
+
+      <Button action={toggleDarkMode} icon={isDarkMode ? symbols.lightMode : symbols.darkMode} />
     </div>
   );
 }

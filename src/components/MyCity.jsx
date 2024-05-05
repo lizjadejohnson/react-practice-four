@@ -1,6 +1,12 @@
 import React from 'react'
+import {useState} from 'react';
+import SubmittedCity from './SubmittedCity'
 
 const MyCity = ({ myCity, setMyCity }) => {
+
+    //Set a state based on whether form has been submitted
+    const [submitted, setSubmitted] = useState(false);
+
 
     // Handle changes to the input
     const handleCityChange = (event) => {
@@ -10,7 +16,8 @@ const MyCity = ({ myCity, setMyCity }) => {
     // Handle form submission
     const handleCitySubmit = (event) => {
         event.preventDefault(); // Prevent default form behavior
-        console.log("City Submitted: ", myCity); // You can handle the submission here
+        console.log("City Submitted: ", myCity); // We handle the submission here
+        setSubmitted(true); // Set submitted to true upon form submission
     };
 
     return (
@@ -23,7 +30,7 @@ const MyCity = ({ myCity, setMyCity }) => {
                 {/* Submit button to submit the form, thanks to onSubmit using handleCitySubmit we prevent default form behavior*/}
                 <input type="submit" value="Submit" />
             </form>
-            <h1>{myCity}</h1>
+            {submitted && <SubmittedCity city={myCity} />} {/* Conditionally render SubmittedCity component */}
         </div>
     )
 }
